@@ -66,7 +66,7 @@ int main()
         string line;
         while (getline(file, line))
         {
-            // For each line of the input file create a new expression
+            // For each line of the input file create a new expression stack
             Stack<char> expression;
 
             // Loop over each char of the expression
