@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <string>
-#include "../../../Linked_List/include/LinkedList.h"
+#include "LinkedList.h"
 
 using namespace std;
 

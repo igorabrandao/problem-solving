@@ -1,8 +1,8 @@
-# ====================================================
-# Makefile build 'Stack project' using Make
-# ====================================================
+# ==========================================================
+# Makefile build 'Balanced Parenthesis project' using Make
+# ==========================================================
 all:
-	g++ -Wall -std=c++0x src/drive.cpp -I include/ -I ../../../Array/include/ -o bin/stackLL -g
+	g++ -Wall -std=c++0x src/drive.cpp -I include/ -I lib/ -o bin/bParenthesis -g
 
 val:
-	valgrind ../bin/stackLL
+	valgrind ../bin/bParenthesis
