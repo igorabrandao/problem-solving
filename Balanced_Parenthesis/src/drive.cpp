@@ -77,7 +77,7 @@ int main()
                     expression.push(c);
                 else
                 {
-                    // Otherwise, check it's previous char to match it with the current parenthesis
+                    // Otherwise, check its previous char to match it with the current parenthesis
                     if (isParenthesisMatched(expression.top(), c))
                         expression.pop(); // remove the previous parenthesis
                 }
