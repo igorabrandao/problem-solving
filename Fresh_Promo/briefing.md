@@ -34,7 +34,6 @@ If secret code list is empty the it is  assumed that the customer is a winner.
 ## Examples
 
 * Example 1 Input:
-
     codeList = [[apple, apple], [banana, *anything*, banana]]
     shoppingCart = [orange, apple, apple, banana, orange, banana]
 
@@ -42,7 +41,6 @@ If secret code list is empty the it is  assumed that the customer is a winner.
     1
 
 * Example 2 Input:
-
     codeList = [[apple, apple], [banana, *anything*, banana]]
     shoppingCart = [banana, orange, banana, apple, apple]
 
@@ -50,7 +48,6 @@ If secret code list is empty the it is  assumed that the customer is a winner.
     0
 
 * Example 3 Input:
-
     codeList = [[apple, apple], [banana, *anything*, banana]]
     shoppingCart = [apple, banana, apple, banana, orange, banana]
 
@@ -58,7 +55,6 @@ If secret code list is empty the it is  assumed that the customer is a winner.
     0
 
 * Example 4 Input:
-
     codeList = [[apple, apple], [apple, apple, banana]]
     shoppingCart = [apple, apple, apple, banana]
 

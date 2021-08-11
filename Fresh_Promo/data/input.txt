@@ -1,9 +1,20 @@
-()
-()[]{}
-(]
-([))
-{[]}
-([]{}())
-{[()()[]{}]}
-{[({[()()[]{}]})({[()()[]{}]})[{[()()[]{}]}]{{[()()[]{}]}}]}
-{[({[()()[]{}]})({[()()[]{}]})[{[()([})[]{}]}]{{[()()[]{}]}}]}
+apple apple
+banana anything banana
+
+orange, apple, apple, banana, orange, banana
+--
+apple apple
+banana, anything, banana
+
+banana, orange, banana, apple, apple
+--
+apple, apple
+banana, anything, banana
+
+apple, banana, apple, banana, orange, banana
+--
+apple, apple
+apple, apple, banana
+
+apple, apple, apple, banana
+--

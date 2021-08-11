@@ -1,52 +1,44 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <Stack.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 // Global definitions
-string openingParenthesis = "({[";
-string closingParenthesis = ")}]";
+string caseDelimiter = "--";
 
-/**
- * Function to determine whether or not it's an opening parenthesis
- */
-bool isOpeningParenthesis(char parenthesis_)
+void printCodeList(vector<vector<string>> codeList_)
 {
-    return (openingParenthesis.find(parenthesis_) != string::npos);
-}
-
-/**
- * Function to determine whether or not it's a closing parenthesis
- */
-bool isClosingParenthesis(char parenthesis_)
-{
-    return (closingParenthesis.find(parenthesis_) != string::npos);
-}
-
-/**
- * Function to check if the parenthesis matches
- */
-bool isParenthesisMatched(char prevParenthesis_, char currParenthesis_)
-{
-    bool result;
-    switch (currParenthesis_)
+    cout << "codeList: [";
+    for (size_t i = 0; i < codeList_.size(); i++)
     {
-    case '}':
-        (prevParenthesis_ == '{' ? result = true : result = false);
-        break;
-    case ']':
-        (prevParenthesis_ == '[' ? result = true : result = false);
-        break;
-    case ')':
-        (prevParenthesis_ == '(' ? result = true : result = false);
-        break;
-    default:
-        result = false;
-        break;
+        cout << "[ ";
+        for (size_t j = 0; j < codeList_[i].size(); j++)
+        {
+            cout << codeList_[i][j] << " ";
+        }
+        cout << "]";
     }
-    return result;
+    cout << "]" << endl;
+}
+
+void printShoppingCart(vector<string> shoppingCart_)
+{
+    cout << "shoppingCart: [";
+    for (size_t i = 0; i < shoppingCart_.size(); i++)
+    {
+        cout << shoppingCart_[i] << " ";
+    }
+    cout << "]" << endl;
+}
+
+/**
+ * Function to solve the Fresh Promo problem
+ */
+int freshPromo(vector<vector<string>> codeList_, vector<string> shoppingCart_)
+{
+    if (codeList_.size() == 0)
+        return 1;
+
+    return 0;
 }
 
 int main()
@@ -54,9 +46,14 @@ int main()
     // LinkedList initial size
     string filename = "./data/input.txt";
 
-    /* ---------------------- [ Balanced parenthesis solving ] ---------------------- */
+    /* ---------------------- [ Fresh Promo solving ] ---------------------- */
 
-    cout << "<<< Running the Balanced parenthesis test:" << endl;
+    vector<vector<string>> codeList;
+    vector<string> expression;
+    vector<string> shoppingCart;
+    bool isCodeList = true;
+
+    cout << "<<< Running the Fresh Promo test:" << endl;
     cout << endl;
 
     // Read the input file with the parenthesis expressions
@@ -66,31 +63,55 @@ int main()
         string line;
         while (getline(file, line))
         {
-            // For each line of the input file create a new expression stack
-            Stack<char> expression;
-
-            // Loop over each char of the expression
-            for (char &c : line)
+            if (line == "")
             {
-                // If the parenthesis is an opening one, add it into the stack
-                if (isOpeningParenthesis(c))
-                    expression.push(c);
-                else
-                {
-                    // Otherwise, check its previous char to match it with the current parenthesis
-                    if (isParenthesisMatched(expression.top(), c))
-                        expression.pop(); // remove the previous parenthesis
-                }
+                isCodeList = false;
+                continue;
+            }
+            else if (line == "--")
+            {
+                isCodeList = true;
+
+                printCodeList(codeList);
+                printShoppingCart(shoppingCart);
+
+                // Print the result
+                int result = freshPromo(codeList, shoppingCart);
+                cout << "result: " << result << endl;
+                cout << endl;
+
+                // Clear the vectors
+                codeList.clear();
+                expression.clear();
+                shoppingCart.clear();
+
+                continue;
             }
 
-            // If the expression is balanced, it should be empty here
-            if (expression.isEmpty())
-                cout << "<<< expression " << line.c_str() << " is valid" << endl;
-            else
-                cout << "<<< expression " << line.c_str() << " is invalid" << endl;
+            // Used to split string around spaces
+            istringstream ss(line);
+
+            // For storing each word
+            string word; 
+
+            // Traverse through all words
+            while (ss >> word) 
+            {
+                // Add the current word into the vector
+                if (isCodeList)
+                    expression.push_back(word);
+                else
+                    shoppingCart.push_back(word);
+            }
+
+            if (isCodeList)
+            {
+                codeList.push_back(expression);
+                expression.clear();
+            }
         }
-        file.close();
     }
+    file.close();
 
     cout << endl;
 
