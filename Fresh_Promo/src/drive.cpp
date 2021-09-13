@@ -38,7 +38,10 @@ int freshPromo(vector<vector<string>> codeList_, vector<string> shoppingCart_)
     if (codeList_.size() == 0)
         return 1;
 
-    return 0;
+    int result = 0;
+
+    
+    return result;
 }
 
 int main()
