@@ -7,8 +7,30 @@ using namespace std;
  */
 int lengthOfLastWord(string s)
 {
-    cout << s << endl;
-    return 0;
+    int count, idx = 0;
+    int n = s.size();
+
+    while (idx < n)
+    {
+        if (s[idx] != ' ')
+        {
+            count++;
+            idx++;
+        }
+        else
+        {
+            // Current char is a white-space
+            while (idx < n && s[idx] == ' ')
+                idx++;
+
+            if (idx == n)
+                return count;
+            else
+                count = 0;
+        }
+    }
+
+    return count;
 }
 
 int main()
@@ -34,14 +56,14 @@ int main()
         {
             if (line != "")
             {
-                lengthOfLastWord(line);
+                cout << line << endl;
+                cout << "<<< last word size: " << lengthOfLastWord(line) << endl;
+                cout << endl;
                 continue;
             }
         }
     }
     file.close();
-
-    cout << endl;
 
     /* ============================================================================== */
 
